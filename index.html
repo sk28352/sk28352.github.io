@@ -5,141 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shruthi Kannan — Machine Learning Engineer</title>
 <meta name="description" content="Shruthi Kannan builds machine learning systems for language and forecasting: RAG chatbots, transformer pipelines, and time-series models. MS Computer Science, Northeastern University.">
-<meta name="theme-color" content="#0C0A24">
+<meta name="theme-color" content="#F6F7F6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237C5CFF'/><stop offset='.55' stop-color='%2322D3EE'/><stop offset='1' stop-color='%23F472B6'/></linearGradient></defs><rect width='32' height='32' rx='8' fill='url(%23g)'/><text x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='%230C0A24' text-anchor='middle'>SK</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317191C'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3ESK%3C/text%3E%3C/svg%3E">
 <style>
   :root {
-    --bg: #0C0A24;
-    --bg-2: #120F33;
-    --ink: #EEF0FF;
-    --muted: #A3A8C7;
-    --faint: #6E7398;
-    --line: rgba(255, 255, 255, 0.09);
-    --glass: rgba(255, 255, 255, 0.045);
-    --violet: #7C5CFF;
-    --cyan: #22D3EE;
-    --pink: #F472B6;
-    --green: #34D399;
-    --grad: linear-gradient(100deg, var(--violet) 0%, var(--cyan) 55%, var(--pink) 100%);
-    --display: "Unbounded", "Segoe UI", system-ui, sans-serif;
-    --body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
-    color-scheme: dark;
+    --bg: #F6F7F6;
+    --surface: #FFFFFF;
+    --panel: #EEF1F0;
+    --ink: #17191C;
+    --ink-2: #2B3036;
+    --muted: #5C636B;
+    --faint: #848B93;
+    --line: #E1E4E2;
+    --line-2: #D3D8D5;
+    --teal: #0E7C66;
+    --teal-dark: #0A5F4E;
+    --teal-soft: rgba(14, 124, 102, 0.10);
+    --amber: #B7791F;
+    --green: #1F9D6B;
+    --font: "Geist", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color-scheme: light;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; background: var(--bg); }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--body);
-    font-size: 1.0625rem;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   img, svg { max-width: 100%; }
-  a { color: var(--cyan); text-underline-offset: 0.2em; }
-  :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
-  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--bg); padding: .5rem 1rem; z-index: 50; }
+  a { color: var(--teal); text-underline-offset: 0.2em; }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .5rem 1rem; z-index: 50; }
   .skip:focus { left: 1rem; top: 1rem; }
   .wrap { width: min(1160px, 100% - 3rem); margin-inline: auto; position: relative; }
-  .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-  /* Aurora background */
-  .aurora { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-  .aurora span {
-    position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55;
-  }
-  .aurora .a1 { width: 46vmax; height: 46vmax; left: -12vmax; top: -16vmax; background: radial-gradient(circle, var(--violet), transparent 65%); }
-  .aurora .a2 { width: 40vmax; height: 40vmax; right: -14vmax; top: 4vmax; background: radial-gradient(circle, var(--cyan), transparent 65%); opacity: .32; }
-  .aurora .a3 { width: 36vmax; height: 36vmax; left: 30vmax; top: 34vmax; background: radial-gradient(circle, var(--pink), transparent 65%); opacity: .22; }
-  .grid-bg {
-    position: absolute; inset: 0;
-    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
-    opacity: .5;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .aurora .a1 { animation: drift1 22s ease-in-out infinite alternate; }
-    .aurora .a2 { animation: drift2 26s ease-in-out infinite alternate; }
-    .aurora .a3 { animation: drift3 30s ease-in-out infinite alternate; }
-  }
-  @keyframes drift1 { to { transform: translate(12vmax, 8vmax) scale(1.1); } }
-  @keyframes drift2 { to { transform: translate(-10vmax, 10vmax) scale(.9); } }
-  @keyframes drift3 { to { transform: translate(-14vmax, -6vmax) scale(1.15); } }
+  .accent { color: var(--teal); }
 
   /* Header */
-  header.site {
-    position: sticky; top: 0; z-index: 20;
-    background: rgba(12, 10, 36, 0.6);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border-bottom: 1px solid var(--line);
-  }
+  header.site { position: sticky; top: 0; z-index: 20; background: rgba(246, 247, 246, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
   header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.25rem; flex-wrap: wrap; }
-  .brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ink); text-decoration: none; font-weight: 700; }
-  .brand .mark { width: 2rem; height: 2rem; border-radius: 9px; background: var(--grad); display: grid; place-items: center; font-family: var(--display); font-size: .75rem; font-weight: 800; color: var(--bg); }
-  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .35rem; flex-wrap: wrap; }
-  nav a { display: block; padding: .45rem .85rem; border-radius: 999px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: .9375rem; }
-  nav a:hover { color: var(--ink); background: var(--glass); }
+  .brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ink); text-decoration: none; font-weight: 600; letter-spacing: -0.01em; }
+  .brand .mark { width: 2rem; height: 2rem; border-radius: 8px; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: .75rem; font-weight: 700; letter-spacing: .02em; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .25rem; flex-wrap: wrap; }
+  nav a { display: block; padding: .45rem .8rem; border-radius: 8px; color: var(--muted); text-decoration: none; font-weight: 500; font-size: .9375rem; }
+  nav a:hover { color: var(--ink); background: var(--panel); }
 
   /* Hero */
-  .hero { padding: clamp(4rem, 10vw, 7.5rem) 0 2.5rem; }
-  .status {
-    display: inline-flex; align-items: center; gap: .6rem;
-    padding: .4rem .95rem .4rem .75rem; border-radius: 999px;
-    background: var(--glass); border: 1px solid var(--line);
-    font-size: .875rem; font-weight: 600; color: var(--muted);
-  }
-  .status i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(52, 211, 153, .6); }
-  @media (prefers-reduced-motion: no-preference) { .status i { animation: ping 2.2s ease-out infinite; } }
-  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, .55); } 80%, 100% { box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); } }
-
-  .hero .hello { margin: 1.75rem 0 .75rem; font-size: 1.125rem; color: var(--muted); font-weight: 500; }
-  .hero .hello strong { color: var(--ink); font-weight: 700; }
-  .hero h1 {
-    font-family: var(--display); font-weight: 800;
-    font-size: clamp(2.25rem, 6vw, 4.6rem);
-    line-height: 1.06; letter-spacing: -0.03em;
-    margin: 0; max-width: 17ch;
-    min-height: 3.2em;
-  }
-  .hero h1 .w { opacity: 1; }
-  .js .hero h1 .w { opacity: 0; transition: opacity .25s ease, filter .35s ease; filter: blur(6px); }
-  .js .hero h1 .w.on { opacity: 1; filter: none; }
-  .caret { display: inline-block; width: .09em; height: .85em; margin-left: .08em; vertical-align: -.05em; background: var(--cyan); border-radius: 2px; }
-  @media (prefers-reduced-motion: no-preference) { .caret { animation: blink 1s steps(1) infinite; } }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  .hero .lede { margin: 1.5rem 0 0; max-width: 60ch; color: var(--muted); font-size: 1.1875rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
-  .btn {
-    position: relative; display: inline-flex; align-items: center; gap: .55rem;
-    padding: .85rem 1.3rem; border-radius: 12px;
-    font-weight: 700; font-size: .9375rem; text-decoration: none; color: var(--ink);
-    background: var(--glass); border: 1px solid var(--line);
-    transition: transform .2s ease, border-color .2s ease, background .2s ease;
-  }
+  .hero { padding: clamp(4rem, 9vw, 6.5rem) 0 2rem; }
+  .status { display: inline-flex; align-items: center; gap: .6rem; padding: .38rem .9rem .38rem .75rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .875rem; font-weight: 500; color: var(--muted); }
+  .status i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--green); }
+  @media (prefers-reduced-motion: no-preference) { .status i { animation: ping 2.4s ease-out infinite; } }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(31, 157, 107, .45); } 80%, 100% { box-shadow: 0 0 0 8px rgba(31, 157, 107, 0); } }
+  .hero .hello { margin: 1.75rem 0 .75rem; font-size: 1.125rem; color: var(--muted); }
+  .hero .hello strong { color: var(--ink); font-weight: 600; }
+  .hero h1 { font-weight: 600; font-size: clamp(2.3rem, 5.6vw, 4.25rem); line-height: 1.06; letter-spacing: -0.04em; margin: 0; max-width: 18ch; color: var(--ink); }
+  .js .hero h1 .w { opacity: 0; transition: opacity .35s ease; }
+  .js .hero h1 .w.on { opacity: 1; }
+  .hero .lede { margin: 1.5rem 0 0; max-width: 62ch; color: var(--muted); font-size: 1.1875rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2.1rem; }
+  .btn { display: inline-flex; align-items: center; gap: .55rem; padding: .78rem 1.2rem; border-radius: 10px; font-weight: 600; font-size: .9375rem; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); transition: border-color .2s ease, background .2s ease; }
   .btn svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
-  .btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
-  .btn.primary { background: var(--grad); color: #0C0A24; border: 0; box-shadow: 0 10px 34px -10px rgba(124, 92, 255, .8); }
-  .btn.primary:hover { box-shadow: 0 14px 40px -10px rgba(34, 211, 238, .8); background: var(--grad); }
+  .btn:hover { border-color: var(--ink); }
+  .btn.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .btn.primary:hover { background: var(--teal); border-color: var(--teal); }
 
   /* Forecast strip */
-  .forecast { margin-top: clamp(3rem, 7vw, 4.5rem); position: relative; }
-  .forecast svg { display: block; width: 100%; height: clamp(110px, 15vw, 170px); overflow: visible; }
-  .forecast .history { fill: none; stroke: url(#histGrad); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 6px rgba(124,92,255,.7)); }
-  .forecast .predicted { fill: none; stroke: var(--pink); stroke-width: 2.5; stroke-dasharray: 6 7; stroke-linecap: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 6px rgba(244,114,182,.8)); }
-  .forecast .band { fill: rgba(244, 114, 182, .14); }
-  .forecast .now-line { stroke: var(--cyan); stroke-width: 1.5; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
-  .forecast-key { display: flex; justify-content: space-between; color: var(--faint); font-size: .8125rem; margin-top: .6rem; font-weight: 600; }
-  .forecast-key span:last-child { color: var(--pink); }
+  .forecast { margin-top: clamp(2.75rem, 6vw, 4rem); }
+  .forecast svg { display: block; width: 100%; height: clamp(100px, 13vw, 150px); overflow: visible; }
+  .forecast .history { fill: none; stroke: var(--ink-2); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .forecast .predicted { fill: none; stroke: var(--teal); stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .forecast .band { fill: var(--teal-soft); }
+  .forecast .now-line { stroke: var(--amber); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+  .forecast-key { display: flex; justify-content: space-between; color: var(--faint); font-size: .8125rem; margin-top: .55rem; font-weight: 500; }
+  .forecast-key span:last-child { color: var(--teal); }
   @media (prefers-reduced-motion: no-preference) {
     .js .forecast:not(.ready) svg { visibility: hidden; }
     .forecast.ready .history { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.8s cubic-bezier(.4,0,.2,1) .2s forwards; }
@@ -149,150 +87,120 @@
   @keyframes appear { to { opacity: 1; } }
 
   /* Highlights */
-  .highlights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: clamp(3rem, 7vw, 4.5rem); }
-  .hl { padding: 1.25rem 1.35rem; border-radius: 16px; background: var(--glass); border: 1px solid var(--line); }
-  .hl b { display: block; font-family: var(--display); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 700; letter-spacing: -0.02em; }
+  .highlights { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(2.75rem, 6vw, 4rem); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+  .hl { padding: 1.35rem 1.5rem; }
+  .hl + .hl { border-left: 1px solid var(--line); }
+  .hl b { display: block; font-size: clamp(1.45rem, 2.4vw, 1.85rem); font-weight: 600; letter-spacing: -0.03em; color: var(--ink); }
   .hl span { color: var(--muted); font-size: .9375rem; }
 
   /* Sections */
-  section { padding: clamp(4.5rem, 10vw, 7rem) 0 0; }
+  section { padding: clamp(4.5rem, 9vw, 6.5rem) 0 0; }
   .sec-head { margin-bottom: 2.25rem; max-width: 62ch; }
-  h2 {
-    font-family: var(--display); font-weight: 700;
-    font-size: clamp(1.75rem, 3.6vw, 2.75rem);
-    letter-spacing: -0.03em; line-height: 1.1; margin: 0;
-  }
-  .sec-head p { margin: .9rem 0 0; color: var(--muted); }
-  h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; line-height: 1.3; margin: 0; }
+  h2 { font-weight: 600; font-size: clamp(1.75rem, 3.3vw, 2.5rem); letter-spacing: -0.035em; line-height: 1.1; margin: 0; }
+  .sec-head p { margin: .8rem 0 0; color: var(--muted); }
+  h3 { font-weight: 600; font-size: 1.2rem; letter-spacing: -0.02em; line-height: 1.3; margin: 0; }
 
-  /* Reveal on scroll */
   @media (prefers-reduced-motion: no-preference) {
-    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
   }
 
   /* Project cards */
-  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .card {
-    position: relative; display: flex; flex-direction: column;
-    border-radius: 22px; background: rgba(18, 15, 51, .72);
-    border: 1px solid var(--line); overflow: hidden;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-  }
-  .card::before {
-    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-    background: var(--grad); opacity: 0; transition: opacity .3s ease;
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
-  }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px -24px rgba(124, 92, 255, .55); }
-  .card:hover::before { opacity: 1; }
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .card { display: flex; flex-direction: column; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: border-color .25s ease, box-shadow .25s ease; }
+  .card:hover { border-color: var(--line-2); box-shadow: 0 18px 40px -28px rgba(23, 25, 28, .35); }
   .card.wide { grid-column: 1 / -1; flex-direction: row; }
-  .visual {
-    position: relative; aspect-ratio: 16 / 9; background:
-      radial-gradient(120% 90% at 0% 0%, rgba(124,92,255,.28), transparent 60%),
-      radial-gradient(100% 90% at 100% 100%, rgba(34,211,238,.18), transparent 60%),
-      #0E0C2B;
-    border-bottom: 1px solid var(--line);
-  }
+  .visual { position: relative; aspect-ratio: 16 / 9; background-color: var(--panel); background-image: radial-gradient(rgba(23,25,28,.07) 1px, transparent 1px); background-size: 18px 18px; border-bottom: 1px solid var(--line); }
   .card.wide .visual { flex: 1.1; aspect-ratio: auto; min-height: 340px; border-bottom: 0; border-right: 1px solid var(--line); }
   .visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
   .body { padding: 1.6rem 1.7rem 1.8rem; display: flex; flex-direction: column; flex: 1; }
   .card.wide .body { flex: 1; padding: clamp(1.75rem, 3.5vw, 2.75rem); justify-content: center; }
-  .card.wide h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
-  .tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 .9rem; padding: 0; list-style: none; }
-  .tag { font-size: .78rem; font-weight: 700; padding: .22rem .65rem; border-radius: 999px; background: rgba(124, 92, 255, .16); color: #C9BEFF; border: 1px solid rgba(124, 92, 255, .3); }
-  .tag.team { background: rgba(244, 114, 182, .14); color: #F9B8D8; border-color: rgba(244, 114, 182, .3); }
+  .card.wide h3 { font-size: clamp(1.35rem, 2.3vw, 1.7rem); }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 .9rem; padding: 0; list-style: none; }
+  .tag { font-size: .78rem; font-weight: 500; padding: .18rem .6rem; border-radius: 6px; background: var(--panel); color: var(--ink-2); border: 1px solid var(--line); }
+  .tag.team { background: rgba(183, 121, 31, .08); color: #8A5A0B; border-color: rgba(183, 121, 31, .28); }
   .body p { margin: .7rem 0 0; color: var(--muted); }
   .metric { display: flex; align-items: baseline; gap: .65rem; margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
-  .metric b { font-family: var(--display); font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em; }
+  .metric b { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em; color: var(--teal); white-space: nowrap; }
   .metric span { color: var(--muted); font-size: .9rem; line-height: 1.4; }
-  .stack { margin-top: 1rem; font-size: .875rem; color: var(--faint); font-weight: 600; }
+  .stack { margin-top: 1rem; font-size: .875rem; color: var(--faint); font-weight: 500; }
   .card-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.35rem; }
-  .card-links a { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .95rem; border-radius: 10px; background: var(--glass); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-weight: 700; font-size: .875rem; transition: border-color .2s, background .2s; }
-  .card-links a:hover { border-color: rgba(34, 211, 238, .5); background: rgba(34, 211, 238, .08); }
+  .card-links a { display: inline-flex; align-items: center; gap: .45rem; padding: .5rem .9rem; border-radius: 8px; background: var(--surface); border: 1px solid var(--line-2); color: var(--ink); text-decoration: none; font-weight: 600; font-size: .875rem; transition: border-color .2s, color .2s; }
+  .card-links a:hover { border-color: var(--teal); color: var(--teal); }
   .card-links svg { width: 1rem; height: 1rem; fill: currentColor; }
 
   /* SVG visual styles */
-  .v-label { font-family: var(--body); font-size: 11px; font-weight: 700; fill: #C7CBEA; }
-  .v-faint { font-family: var(--body); font-size: 10px; font-weight: 600; fill: #7F84AD; }
-  .v-box { fill: rgba(255,255,255,.05); stroke: rgba(255,255,255,.14); }
+  .v-label { font-family: var(--font); font-size: 11px; font-weight: 600; fill: #2B3036; }
+  .v-faint { font-family: var(--font); font-size: 10px; font-weight: 500; fill: #7A818A; }
+  .v-box { fill: #FFFFFF; stroke: #D3D8D5; }
   @media (prefers-reduced-motion: no-preference) {
-    .spin { transform-origin: var(--cx) var(--cy); animation: spin 3.2s linear infinite; }
+    .spin { transform-origin: var(--cx) var(--cy); animation: spin 5s linear infinite; }
     .bar-grow { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); }
     .in .bar-grow { animation: grow 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
-    .ecg { stroke-dasharray: 520; stroke-dashoffset: 520; animation: ecg 2.6s linear infinite; }
-    .pulse-dot { animation: beat 1.3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-    .float { animation: floaty 4s ease-in-out infinite; }
+    .ecg { stroke-dasharray: 520; stroke-dashoffset: 520; animation: ecg 3s linear infinite; }
+    .pulse-dot { animation: beat 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .float { animation: floaty 5s ease-in-out infinite; }
     .draw-curve { stroke-dasharray: 400; stroke-dashoffset: 400; }
     .in .draw-curve { animation: curve 2.2s ease-out .3s forwards; }
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes grow { to { transform: scaleX(1); } }
   @keyframes ecg { to { stroke-dashoffset: 0; } }
-  @keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } }
-  @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.15); } 30% { transform: scale(1); } }
+  @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
   @keyframes curve { to { stroke-dashoffset: 0; } }
 
   /* Publications */
-  .pubs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .pub { position: relative; padding: 1.8rem; border-radius: 22px; background: rgba(18, 15, 51, .72); border: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
-  .pub::after { content: ""; position: absolute; right: -60px; top: -60px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(34,211,238,.25), transparent 70%); pointer-events: none; }
+  .pubs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .pub { padding: 1.8rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--teal); display: flex; flex-direction: column; }
   .pub .meta { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .pub .meta span { font-size: .78rem; font-weight: 700; padding: .22rem .65rem; border-radius: 999px; background: rgba(34, 211, 238, .12); color: #A6EFFA; border: 1px solid rgba(34, 211, 238, .28); }
+  .pub .meta span { font-size: .78rem; font-weight: 500; padding: .18rem .6rem; border-radius: 6px; background: var(--teal-soft); color: var(--teal-dark); }
   .pub h3 { font-size: 1.1rem; }
   .pub p { color: var(--muted); margin: .8rem 0 0; }
-  .pub .metric { margin-top: auto; }
   .pub .card-links { margin-top: 1.25rem; }
   .pub .spacer { flex: 1; min-height: 1rem; }
 
   /* Skills */
   .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .skill { padding: 1.4rem 1.5rem; border-radius: 18px; background: var(--glass); border: 1px solid var(--line); }
-  .skill h3 { font-family: var(--body); font-size: 1rem; font-weight: 700; letter-spacing: 0; display: flex; align-items: center; gap: .55rem; }
-  .skill h3 i { width: .6rem; height: .6rem; border-radius: 3px; background: var(--grad); }
+  .skill { padding: 1.4rem 1.5rem; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+  .skill h3 { font-size: 1rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: .55rem; }
+  .skill h3 i { width: .5rem; height: .5rem; border-radius: 2px; background: var(--teal); }
   .chips { list-style: none; margin: .9rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
-  .chips li { font-size: .84rem; font-weight: 600; padding: .28rem .7rem; border-radius: 8px; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: #D3D6EE; }
+  .chips li { font-size: .84rem; font-weight: 500; padding: .24rem .65rem; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); color: var(--ink-2); }
 
   /* Education */
   .edu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  .edu div { padding: 1.5rem 1.6rem; border-radius: 18px; background: var(--glass); border: 1px solid var(--line); }
-  .edu strong { display: block; font-weight: 700; font-size: 1.05rem; }
+  .edu div { padding: 1.5rem 1.6rem; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+  .edu strong { display: block; font-weight: 600; font-size: 1.05rem; }
   .edu span { display: block; color: var(--muted); }
-  .edu em { display: inline-block; margin-top: .75rem; font-style: normal; font-weight: 700; font-size: .85rem; color: var(--cyan); }
+  .edu em { display: inline-block; margin-top: .75rem; font-style: normal; font-weight: 500; font-size: .875rem; color: var(--teal); }
 
   /* Contact */
   .contact { padding-bottom: clamp(4rem, 9vw, 6rem); }
-  .cta {
-    position: relative; overflow: hidden; text-align: center;
-    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
-    border-radius: 28px; border: 1px solid var(--line);
-    background:
-      radial-gradient(80% 120% at 0% 0%, rgba(124,92,255,.45), transparent 60%),
-      radial-gradient(80% 120% at 100% 100%, rgba(244,114,182,.35), transparent 60%),
-      radial-gradient(60% 80% at 60% 0%, rgba(34,211,238,.25), transparent 60%),
-      #120F33;
-  }
-  .cta h2 { font-size: clamp(1.9rem, 4.6vw, 3.4rem); max-width: 18ch; margin: 0 auto; }
-  .cta p { color: #C9CDEA; max-width: 52ch; margin: 1rem auto 0; }
+  .cta { text-align: center; padding: clamp(2.75rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3rem); border-radius: 20px; background: var(--ink); color: #fff; position: relative; overflow: hidden; }
+  .cta::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 18px 18px; pointer-events: none; }
+  .cta > * { position: relative; }
+  .cta h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); max-width: 20ch; margin: 0 auto; }
+  .cta p { color: #B9BEC4; max-width: 52ch; margin: 1rem auto 0; }
   .cta .actions { justify-content: center; }
+  .cta .btn { background: transparent; color: #fff; border-color: rgba(255,255,255,.28); }
+  .cta .btn:hover { border-color: #fff; }
+  .cta .btn.primary { background: var(--teal); border-color: var(--teal); }
+  .cta .btn.primary:hover { background: #12937A; border-color: #12937A; }
   footer { border-top: 1px solid var(--line); padding: 1.75rem 0 2.25rem; color: var(--faint); font-size: .875rem; }
   footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
   @media (max-width: 960px) {
     .highlights { grid-template-columns: repeat(2, 1fr); }
+    .hl:nth-child(3) { border-left: 0; }
+    .hl:nth-child(n+3) { border-top: 1px solid var(--line); }
     .skills { grid-template-columns: repeat(2, 1fr); }
     .card.wide { flex-direction: column; }
     .card.wide .visual { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: 1px solid var(--line); }
   }
   @media (max-width: 720px) {
     .projects, .pubs, .edu, .skills { grid-template-columns: 1fr; }
-    nav a { padding: .4rem .6rem; font-size: .875rem; }
-    .hero h1 { min-height: 0; }
-  }
-  @media (max-width: 420px) {
-    .highlights { grid-template-columns: 1fr 1fr; gap: .7rem; }
-    .hl { padding: 1rem; }
+    nav a { padding: .4rem .55rem; font-size: .875rem; }
   }
 </style>
 </head>
@@ -321,10 +229,10 @@
 
     <!-- Hero -->
     <div class="hero" id="top">
-      <span class="status"><i></i>Open to full-time roles in ML, AI/NLP, and data science</span>
+      <span class="status"><i></i>Open to full-time roles in ML, AI, and LLM engineering</span>
       <p class="hello">Hi, I’m <strong>Shruthi Kannan</strong>, a machine learning engineer.</p>
-      <h1 id="headline" class="grad-text" aria-label="I build ML systems that understand language and predict what comes next.">I build ML systems that understand language and predict what comes next.</h1>
-      <p class="lede">From RAG chatbots and transformer pipelines to time-series models for renewable energy, with two IEEE publications along the way. I’m finishing my MS in Computer Science at Northeastern University in Boston.</p>
+      <h1 id="headline" aria-label="I build ML systems that understand language and predict what comes next.">I build ML systems that understand language and predict what comes next.</h1>
+      <p class="lede">From RAG chatbots and transformer pipelines to time-series models for renewable energy, with two IEEE publications along the way. I’m finishing my MS in Computer Science at Northeastern University in Boston, and going deeper into retrieval and agentic AI systems.</p>
       <div class="actions">
         <a class="btn primary" href="Shruthi_Kannan_Resume.pdf" download>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1zM5 19a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"/></svg>
@@ -344,8 +252,8 @@
         <svg id="forecast-svg" viewBox="0 0 1000 170" preserveAspectRatio="none">
           <defs>
             <linearGradient id="histGrad" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0" stop-color="#7C5CFF"/>
-              <stop offset="1" stop-color="#22D3EE"/>
+              <stop offset="0" stop-color="#0E7C66"/>
+              <stop offset="1" stop-color="#5B8A80"/>
             </linearGradient>
           </defs>
         </svg>
@@ -353,10 +261,10 @@
       </figure>
 
       <div class="highlights reveal">
-        <div class="hl"><b class="grad-text">2</b><span>IEEE publications</span></div>
-        <div class="hl"><b class="grad-text">0.95</b><span>emotion detection accuracy</span></div>
-        <div class="hl"><b class="grad-text">98.7%</b><span>gait recognition test accuracy</span></div>
-        <div class="hl"><b class="grad-text">MS CS</b><span>Northeastern University</span></div>
+        <div class="hl"><b>2</b><span>IEEE publications</span></div>
+        <div class="hl"><b>0.95</b><span>emotion detection accuracy</span></div>
+        <div class="hl"><b>98.7%</b><span>gait recognition test accuracy</span></div>
+        <div class="hl"><b>MS CS</b><span>Northeastern University</span></div>
       </div>
     </div>
 
@@ -374,7 +282,7 @@
           <div class="visual" aria-hidden="true">
             <svg viewBox="0 0 560 340" preserveAspectRatio="xMidYMid meet">
               <defs>
-                <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient>
+                <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#0E7C66"/><stop offset="1" stop-color="#5B8A80"/></linearGradient>
                 <path id="flowA" d="M118 120 C 190 120, 200 170, 262 170"/>
                 <path id="flowB" d="M118 175 C 190 175, 200 170, 262 170"/>
                 <path id="flowC" d="M118 230 C 190 230, 200 170, 262 170"/>
@@ -383,44 +291,44 @@
               <!-- documents -->
               <g class="float">
                 <rect class="v-box" x="40" y="94" width="76" height="52" rx="8"/>
-                <rect x="52" y="108" width="40" height="5" rx="2.5" fill="#7C5CFF"/><rect x="52" y="119" width="52" height="4" rx="2" fill="#4A4F78"/><rect x="52" y="128" width="30" height="4" rx="2" fill="#4A4F78"/>
+                <rect x="52" y="108" width="40" height="5" rx="2.5" fill="#0E7C66"/><rect x="52" y="119" width="52" height="4" rx="2" fill="#CBD1D5"/><rect x="52" y="128" width="30" height="4" rx="2" fill="#CBD1D5"/>
                 <rect class="v-box" x="40" y="150" width="76" height="52" rx="8"/>
-                <rect x="52" y="164" width="40" height="5" rx="2.5" fill="#22D3EE"/><rect x="52" y="175" width="52" height="4" rx="2" fill="#4A4F78"/><rect x="52" y="184" width="30" height="4" rx="2" fill="#4A4F78"/>
+                <rect x="52" y="164" width="40" height="5" rx="2.5" fill="#5B8A80"/><rect x="52" y="175" width="52" height="4" rx="2" fill="#CBD1D5"/><rect x="52" y="184" width="30" height="4" rx="2" fill="#CBD1D5"/>
                 <rect class="v-box" x="40" y="206" width="76" height="52" rx="8"/>
-                <rect x="52" y="220" width="40" height="5" rx="2.5" fill="#F472B6"/><rect x="52" y="231" width="52" height="4" rx="2" fill="#4A4F78"/><rect x="52" y="240" width="30" height="4" rx="2" fill="#4A4F78"/>
+                <rect x="52" y="220" width="40" height="5" rx="2.5" fill="#B7791F"/><rect x="52" y="231" width="52" height="4" rx="2" fill="#CBD1D5"/><rect x="52" y="240" width="30" height="4" rx="2" fill="#CBD1D5"/>
               </g>
               <text class="v-faint" x="78" y="282" text-anchor="middle">41 official PDFs</text>
 
-              <use href="#flowA" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
-              <use href="#flowB" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
-              <use href="#flowC" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
-              <circle r="4" fill="#7C5CFF"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#flowA"/></animateMotion></circle>
-              <circle r="4" fill="#22D3EE"><animateMotion dur="2.4s" begin=".8s" repeatCount="indefinite"><mpath href="#flowB"/></animateMotion></circle>
-              <circle r="4" fill="#F472B6"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite"><mpath href="#flowC"/></animateMotion></circle>
+              <use href="#flowA" fill="none" stroke="rgba(23,25,28,.16)" stroke-width="1.5"/>
+              <use href="#flowB" fill="none" stroke="rgba(23,25,28,.16)" stroke-width="1.5"/>
+              <use href="#flowC" fill="none" stroke="rgba(23,25,28,.16)" stroke-width="1.5"/>
+              <circle r="4" fill="#0E7C66"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#flowA"/></animateMotion></circle>
+              <circle r="4" fill="#5B8A80"><animateMotion dur="2.4s" begin=".8s" repeatCount="indefinite"><mpath href="#flowB"/></animateMotion></circle>
+              <circle r="4" fill="#B7791F"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite"><mpath href="#flowC"/></animateMotion></circle>
 
               <!-- vector store -->
-              <rect x="262" y="118" width="78" height="104" rx="14" fill="rgba(124,92,255,.14)" stroke="url(#g1)" stroke-width="1.5"/>
-              <g fill="#C9BEFF">
-                <circle cx="282" cy="140" r="3"/><circle cx="300" cy="148" r="3" fill="#22D3EE"/><circle cx="320" cy="138" r="3"/>
-                <circle cx="286" cy="164" r="3" fill="#F472B6"/><circle cx="308" cy="172" r="3"/><circle cx="324" cy="160" r="3" fill="#22D3EE"/>
-                <circle cx="280" cy="190" r="3"/><circle cx="300" cy="198" r="3" fill="#22D3EE"/><circle cx="322" cy="188" r="3" fill="#F472B6"/>
+              <rect x="262" y="118" width="78" height="104" rx="14" fill="rgba(14,124,102,.08)" stroke="url(#g1)" stroke-width="1.5"/>
+              <g fill="#0E7C66">
+                <circle cx="282" cy="140" r="3"/><circle cx="300" cy="148" r="3" fill="#5B8A80"/><circle cx="320" cy="138" r="3"/>
+                <circle cx="286" cy="164" r="3" fill="#B7791F"/><circle cx="308" cy="172" r="3"/><circle cx="324" cy="160" r="3" fill="#5B8A80"/>
+                <circle cx="280" cy="190" r="3"/><circle cx="300" cy="198" r="3" fill="#5B8A80"/><circle cx="322" cy="188" r="3" fill="#B7791F"/>
               </g>
               <text class="v-label" x="301" y="244" text-anchor="middle">ChromaDB</text>
               <text class="v-faint" x="301" y="258" text-anchor="middle">filtered by category</text>
 
-              <use href="#flowD" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
-              <circle r="4" fill="#22D3EE"><animateMotion dur="1.8s" repeatCount="indefinite"><mpath href="#flowD"/></animateMotion></circle>
+              <use href="#flowD" fill="none" stroke="rgba(23,25,28,.16)" stroke-width="1.5"/>
+              <circle r="4" fill="#5B8A80"><animateMotion dur="1.8s" repeatCount="indefinite"><mpath href="#flowD"/></animateMotion></circle>
 
               <!-- chat -->
-              <rect x="404" y="70" width="142" height="34" rx="12" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)"/>
+              <rect x="404" y="70" width="142" height="34" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/>
               <text class="v-label" x="475" y="91" text-anchor="middle">How do I get my I-94?</text>
-              <rect x="412" y="112" width="128" height="104" rx="12" fill="rgba(34,211,238,.10)" stroke="rgba(34,211,238,.4)"/>
-              <rect x="424" y="126" width="96" height="5" rx="2.5" fill="#A6EFFA"/>
-              <rect x="424" y="138" width="104" height="5" rx="2.5" fill="#5F7FA8"/>
-              <rect x="424" y="150" width="84" height="5" rx="2.5" fill="#5F7FA8"/>
-              <rect x="424" y="162" width="98" height="5" rx="2.5" fill="#5F7FA8"/>
-              <rect x="424" y="182" width="96" height="22" rx="11" fill="rgba(244,114,182,.16)" stroke="rgba(244,114,182,.45)"/>
-              <text class="v-label" x="472" y="197" text-anchor="middle" style="font-size:10px;fill:#F9B8D8">Source: I-94.pdf</text>
+              <rect x="412" y="112" width="128" height="104" rx="12" fill="#FFFFFF" stroke="rgba(14,124,102,.45)"/>
+              <rect x="424" y="126" width="96" height="5" rx="2.5" fill="#0E7C66"/>
+              <rect x="424" y="138" width="104" height="5" rx="2.5" fill="#C6CCD1"/>
+              <rect x="424" y="150" width="84" height="5" rx="2.5" fill="#C6CCD1"/>
+              <rect x="424" y="162" width="98" height="5" rx="2.5" fill="#C6CCD1"/>
+              <rect x="424" y="182" width="96" height="22" rx="11" fill="rgba(183,121,31,.10)" stroke="rgba(183,121,31,.45)"/>
+              <text class="v-label" x="472" y="197" text-anchor="middle" style="font-size:10px;fill:#8A5A0B">Source: I-94.pdf</text>
               <text class="v-faint" x="476" y="238" text-anchor="middle">LLaMA 3.2, cited answer</text>
             </svg>
           </div>
@@ -428,7 +336,7 @@
             <ul class="tags"><li class="tag">RAG</li><li class="tag">LLMs</li><li class="tag team">Team project</li></ul>
             <h3>Northeastern student support chatbot</h3>
             <p>Answers international students’ questions about visas, employment, billing, and more from 41 official university documents across 8 categories. Retrieval is filtered to the category a student picks, and every answer links back to the PDFs it came from. It runs fully locally, so no student data leaves the machine.</p>
-            <div class="metric"><b class="grad-text">&lt;30s</b><span>per answer, with a source citation for every response</span></div>
+            <div class="metric"><b>&lt;30s</b><span>per answer, with a source citation for every response</span></div>
             <p class="stack">LangChain, LLaMA 3.2 (Ollama), ChromaDB, nomic-embed-text, PyPDF, Streamlit</p>
             <div class="card-links">
               <!-- TODO: replace with your RAG repo URL -->
@@ -441,30 +349,30 @@
         <article class="card reveal">
           <div class="visual" aria-hidden="true">
             <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
-              <rect x="24" y="22" width="190" height="34" rx="12" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)"/>
+              <rect x="24" y="22" width="190" height="34" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/>
               <text class="v-label" x="38" y="43">“I’ve been so overwhelmed lately”</text>
               <text class="v-faint" x="24" y="84">RoBERTa emotion detection</text>
               <g>
                 <text class="v-label" x="24" y="106">sadness</text>
-                <rect x="96" y="97" width="150" height="11" rx="5.5" fill="rgba(255,255,255,.06)"/>
-                <rect class="bar-grow" x="96" y="97" width="132" height="11" rx="5.5" fill="#7C5CFF"/>
+                <rect x="96" y="97" width="150" height="11" rx="5.5" fill="rgba(23,25,28,.07)"/>
+                <rect class="bar-grow" x="96" y="97" width="132" height="11" rx="5.5" fill="#0E7C66"/>
                 <text class="v-label" x="24" y="128">nervousness</text>
-                <rect x="96" y="119" width="150" height="11" rx="5.5" fill="rgba(255,255,255,.06)"/>
-                <rect class="bar-grow" x="96" y="119" width="104" height="11" rx="5.5" fill="#22D3EE" style="animation-delay:.15s"/>
+                <rect x="96" y="119" width="150" height="11" rx="5.5" fill="rgba(23,25,28,.07)"/>
+                <rect class="bar-grow" x="96" y="119" width="104" height="11" rx="5.5" fill="#5B8A80" style="animation-delay:.15s"/>
                 <text class="v-label" x="24" y="150">fear</text>
-                <rect x="96" y="141" width="150" height="11" rx="5.5" fill="rgba(255,255,255,.06)"/>
-                <rect class="bar-grow" x="96" y="141" width="62" height="11" rx="5.5" fill="#F472B6" style="animation-delay:.3s"/>
+                <rect x="96" y="141" width="150" height="11" rx="5.5" fill="rgba(23,25,28,.07)"/>
+                <rect class="bar-grow" x="96" y="141" width="62" height="11" rx="5.5" fill="#B7791F" style="animation-delay:.3s"/>
               </g>
               <text class="v-faint" x="24" y="182">Sentence-BERT intent</text>
-              <rect x="24" y="190" width="118" height="24" rx="12" fill="rgba(244,114,182,.16)" stroke="rgba(244,114,182,.45)"/>
-              <text class="v-label" x="83" y="206" text-anchor="middle" style="fill:#F9B8D8">seeking support</text>
+              <rect x="24" y="190" width="118" height="24" rx="12" fill="rgba(183,121,31,.10)" stroke="rgba(183,121,31,.45)"/>
+              <text class="v-label" x="83" y="206" text-anchor="middle" style="fill:#8A5A0B">seeking support</text>
               <!-- reply -->
               <g class="float">
-                <rect x="270" y="88" width="112" height="86" rx="14" fill="rgba(34,211,238,.10)" stroke="rgba(34,211,238,.4)"/>
-                <rect x="282" y="104" width="80" height="5" rx="2.5" fill="#A6EFFA"/>
-                <rect x="282" y="116" width="88" height="5" rx="2.5" fill="#5F7FA8"/>
-                <rect x="282" y="128" width="66" height="5" rx="2.5" fill="#5F7FA8"/>
-                <rect x="282" y="140" width="78" height="5" rx="2.5" fill="#5F7FA8"/>
+                <rect x="270" y="88" width="112" height="86" rx="14" fill="#FFFFFF" stroke="rgba(14,124,102,.45)"/>
+                <rect x="282" y="104" width="80" height="5" rx="2.5" fill="#0E7C66"/>
+                <rect x="282" y="116" width="88" height="5" rx="2.5" fill="#C6CCD1"/>
+                <rect x="282" y="128" width="66" height="5" rx="2.5" fill="#C6CCD1"/>
+                <rect x="282" y="140" width="78" height="5" rx="2.5" fill="#C6CCD1"/>
                 <text class="v-faint" x="326" y="194" text-anchor="middle">LLaMA 3 reply</text>
               </g>
             </svg>
@@ -473,7 +381,7 @@
             <ul class="tags"><li class="tag">NLP</li><li class="tag">Transformers</li><li class="tag team">Team project</li></ul>
             <h3>Hybrid transformer mental health chatbot</h3>
             <p>An empathetic chatbot that works out how someone feels and what they need before replying. RoBERTa detects emotions, Sentence-BERT recognizes intent, and LLaMA 3 writes the response, benchmarked against SVM, Naive Bayes, and LSTM baselines.</p>
-            <div class="metric"><b class="grad-text">0.95</b><span>emotion detection accuracy, with 0.85 for intent classification</span></div>
+            <div class="metric"><b>0.95</b><span>emotion detection accuracy, with 0.85 for intent classification</span></div>
             <p class="stack">RoBERTa, Sentence-BERT, LLaMA 3, Ollama, PyTorch</p>
             <div class="card-links">
               <!-- TODO: replace with your teammate's repo URL -->
@@ -486,22 +394,22 @@
         <article class="card reveal">
           <div class="visual" aria-hidden="true">
             <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
-              <defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
+              <defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#0E7C66"/><stop offset="1" stop-color="#5B8A80"/></linearGradient></defs>
               <!-- turbine -->
-              <path d="M86 92 L82 206 L90 206 Z" fill="#3A3F6A"/>
+              <path d="M86 92 L82 206 L90 206 Z" fill="#9AA1A8"/>
               <g class="spin" style="--cx:86px; --cy:90px">
-                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#C9BEFF"/>
-                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#A6EFFA" transform="rotate(120 86 90)"/>
-                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#F9B8D8" transform="rotate(240 86 90)"/>
+                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#0E7C66"/>
+                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#0E7C66" transform="rotate(120 86 90)"/>
+                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#8A5A0B" transform="rotate(240 86 90)"/>
               </g>
-              <circle cx="86" cy="90" r="6" fill="#EEF0FF"/>
+              <circle cx="86" cy="90" r="6" fill="#17191C"/>
               <!-- power curve -->
-              <line x1="170" y1="190" x2="380" y2="190" stroke="rgba(255,255,255,.16)"/>
-              <line x1="170" y1="190" x2="170" y2="40" stroke="rgba(255,255,255,.16)"/>
+              <line x1="170" y1="190" x2="380" y2="190" stroke="rgba(23,25,28,.18)"/>
+              <line x1="170" y1="190" x2="170" y2="40" stroke="rgba(23,25,28,.18)"/>
               <text class="v-faint" x="275" y="210" text-anchor="middle">wind speed</text>
               <text class="v-faint" x="160" y="118" text-anchor="middle" transform="rotate(-90 160 118)">power output</text>
               <path class="draw-curve" d="M172 188 C 200 188, 212 186, 226 172 S 262 66, 292 56 L 376 54" fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round"/>
-              <g fill="#F472B6" opacity=".85">
+              <g fill="#B7791F" opacity=".85">
                 <circle cx="190" cy="185" r="2.6"/><circle cx="214" cy="181" r="2.6"/><circle cx="232" cy="160" r="2.6"/><circle cx="246" cy="128" r="2.6"/>
                 <circle cx="258" cy="98" r="2.6"/><circle cx="272" cy="74" r="2.6"/><circle cx="296" cy="60" r="2.6"/><circle cx="330" cy="52" r="2.6"/><circle cx="360" cy="56" r="2.6"/>
               </g>
@@ -511,7 +419,7 @@
             <ul class="tags"><li class="tag">Forecasting</li><li class="tag">Time series</li></ul>
             <h3>Wind turbine power forecasting</h3>
             <p>Forecasting pipelines on meteorological and turbine data to predict power generation, comparing ARIMA and SARIMA against Prophet, LSTM, and a tuned gradient boosting model, then testing six regressors on turbine output.</p>
-            <div class="metric"><b class="grad-text">R² 0.99</b><span>with an MLP regressor, at an RMSE of 1.58 kW</span></div>
+            <div class="metric"><b>R² 0.99</b><span>with an MLP regressor, at an RMSE of 1.58 kW</span></div>
             <p class="stack">ARIMA, SARIMA, Prophet, LSTM, scikit-learn</p>
             <div class="card-links">
               <!-- TODO: replace with your wind energy repo URL -->
@@ -524,8 +432,8 @@
         <article class="card reveal">
           <div class="visual" aria-hidden="true">
             <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
-              <defs><linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#F472B6"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs>
-              <path class="ecg" d="M20 52 L120 52 L132 52 L140 30 L150 76 L160 20 L170 64 L178 52 L380 52" fill="none" stroke="#F472B6" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+              <defs><linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#5B8A80"/><stop offset="1" stop-color="#0E7C66"/></linearGradient></defs>
+              <path class="ecg" d="M20 52 L120 52 L132 52 L140 30 L150 76 L160 20 L170 64 L178 52 L380 52" fill="none" stroke="#B4413C" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
               <text class="v-faint" x="24" y="98">What drives each prediction (SHAP)</text>
               <g>
                 <text class="v-label" x="24" y="121">thal</text>
@@ -539,14 +447,14 @@
                 <text class="v-label" x="24" y="209">ST dep.</text>
                 <rect class="bar-grow" x="96" y="200" width="74" height="11" rx="5.5" fill="url(#g4)" style="animation-delay:.4s"/>
               </g>
-              <g class="pulse-dot"><path d="M352 120 C 352 108, 368 106, 368 120 C 368 106, 384 108, 384 120 C 384 134, 368 144, 368 150 C 368 144, 352 134, 352 120 Z" fill="#F472B6"/></g>
+              <g class="pulse-dot"><path d="M352 120 C 352 108, 368 106, 368 120 C 368 106, 384 108, 384 120 C 384 134, 368 144, 368 150 C 368 144, 352 134, 352 120 Z" fill="#B4413C"/></g>
             </svg>
           </div>
           <div class="body">
             <ul class="tags"><li class="tag">Explainable AI</li><li class="tag">Ensembles</li></ul>
             <h3>Explainable heart disease prediction</h3>
             <p>Six classical and ensemble models compared on the UCI Heart Disease dataset, with SHAP, permutation importance, and partial dependence plots showing which risk factors drive each prediction, down to individual patients.</p>
-            <div class="metric"><b class="grad-text">89%</b><span>test accuracy, catching 94% of heart disease cases</span></div>
+            <div class="metric"><b>89%</b><span>test accuracy, catching 94% of heart disease cases</span></div>
             <p class="stack">scikit-learn, Random Forest, AdaBoost, SHAP, ELI5</p>
             <div class="card-links">
               <a href="https://github.com/sk28352/Heart-Disease-Prediction" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>View code</a>
@@ -558,7 +466,7 @@
         <article class="card reveal">
           <div class="visual" aria-hidden="true">
             <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
-              <defs><linearGradient id="g5" x1="0" x2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs>
+              <defs><linearGradient id="g5" x1="0" x2="1"><stop offset="0" stop-color="#5B8A80"/><stop offset="1" stop-color="#0E7C66"/></linearGradient></defs>
               <!-- walking figure frames -->
               <g stroke="url(#g5)" stroke-width="3.5" stroke-linecap="round" fill="none">
                 <g opacity=".35"><circle cx="70" cy="66" r="10"/><path d="M70 78 L70 128 M70 92 L56 112 M70 92 L84 108 M70 128 L58 168 M70 128 L80 168"/></g>
@@ -567,13 +475,13 @@
               </g>
               <!-- MobileNet blocks -->
               <g class="float">
-                <rect x="290" y="70" width="18" height="90" rx="5" fill="rgba(124,92,255,.35)"/>
-                <rect x="314" y="82" width="18" height="66" rx="5" fill="rgba(124,92,255,.5)"/>
-                <rect x="338" y="94" width="18" height="42" rx="5" fill="rgba(34,211,238,.55)"/>
-                <rect x="362" y="104" width="18" height="22" rx="5" fill="#22D3EE"/>
+                <rect x="290" y="70" width="18" height="90" rx="5" fill="rgba(14,124,102,.25)"/>
+                <rect x="314" y="82" width="18" height="66" rx="5" fill="rgba(14,124,102,.45)"/>
+                <rect x="338" y="94" width="18" height="42" rx="5" fill="rgba(14,124,102,.7)"/>
+                <rect x="362" y="104" width="18" height="22" rx="5" fill="#5B8A80"/>
               </g>
               <text class="v-faint" x="335" y="182" text-anchor="middle">MobileNet V2</text>
-              <line x1="24" y1="190" x2="270" y2="190" stroke="rgba(255,255,255,.14)"/>
+              <line x1="24" y1="190" x2="270" y2="190" stroke="#D3D8D5"/>
               <text class="v-faint" x="150" y="208" text-anchor="middle">cross-view gait frames</text>
             </svg>
           </div>
@@ -581,7 +489,7 @@
             <ul class="tags"><li class="tag">Computer vision</li><li class="tag">Published</li></ul>
             <h3>Human gait recognition with lightweight MobileNet</h3>
             <p>Recognizing people by how they walk. We built a new cross-view gait dataset from videos recorded at different speeds and angles, then compared SVM, decision tree, and Inception models against a lightweight MobileNet.</p>
-            <div class="metric"><b class="grad-text">98.7%</b><span>test accuracy with MobileNet V2, outperforming Inception V3</span></div>
+            <div class="metric"><b>98.7%</b><span>test accuracy with MobileNet V2, outperforming Inception V3</span></div>
             <p class="stack">TensorFlow, Keras, MobileNet V2, OpenCV</p>
             <div class="card-links">
               <a href="https://ieeexplore.ieee.org/document/10134510" target="_blank" rel="noopener">Read the paper</a>
@@ -604,7 +512,7 @@
           <h3>Solar Power Output Prediction with AI: Leveraging Meta Learner Ensemble Stacked Regressor</h3>
           <p>A stacked ensemble combining KNN, a deep neural network, LightGBM, and Random Forest under a meta-learner, tuned to capture non-linear relationships in solar output.</p>
           <div class="spacer"></div>
-          <div class="metric"><b class="grad-text">R² 0.68</b><span>improving reliability of renewable energy forecasts</span></div>
+          <div class="metric"><b>R² 0.68</b><span>improving reliability of renewable energy forecasts</span></div>
           <div class="card-links"><a href="https://ieeexplore.ieee.org/document/10939884" target="_blank" rel="noopener">Read on IEEE Xplore</a></div>
         </article>
         <article class="pub reveal">
@@ -612,7 +520,7 @@
           <h3>Human Gait Recognition using Cross View Micro Gait Dataset with Light Weight MobileNet</h3>
           <p>Introduces the Cross View Micro Gait (CVM-GAIT) dataset and shows a lightweight MobileNet V2 outperforming Inception V3 and traditional classifiers in precision, recall, and F1.</p>
           <div class="spacer"></div>
-          <div class="metric"><b class="grad-text">98.7%</b><span>test accuracy, with 98.9% on training data</span></div>
+          <div class="metric"><b>98.7%</b><span>test accuracy, with 98.9% on training data</span></div>
           <div class="card-links"><a href="https://ieeexplore.ieee.org/document/10134510" target="_blank" rel="noopener">Read on IEEE Xplore</a></div>
         </article>
       </div>
@@ -644,7 +552,7 @@
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="cta reveal">
         <h2 id="contact-title">Let’s build something useful together.</h2>
-        <p>I’m looking for full-time roles in ML engineering, AI/NLP, and data science. The quickest way to reach me is email.</p>
+        <p>I’m looking for full-time roles in ML engineering, AI and LLM engineering, NLP, and data science. The quickest way to reach me is email.</p>
         <div class="actions">
           <a class="btn primary" href="mailto:kannan.shru@northeastern.edu">Email me</a>
           <a class="btn" href="https://www.linkedin.com/in/shruthi-kannan-69924624a/" target="_blank" rel="noopener">LinkedIn</a>
@@ -676,11 +584,8 @@
       h1.appendChild(s);
       return s;
     });
-    var caret = document.createElement("span");
-    caret.className = "caret"; caret.setAttribute("aria-hidden", "true");
-    h1.appendChild(caret);
     if (reduce) { spans.forEach(function (s) { s.classList.add("on"); }); }
-    else { spans.forEach(function (s, i) { setTimeout(function () { s.classList.add("on"); }, 250 + i * 95); }); }
+    else { spans.forEach(function (s, i) { setTimeout(function () { s.classList.add("on"); }, 150 + i * 55); }); }
   }
 
   // Reveal sections as they scroll into view.
