@@ -152,6 +152,18 @@
   @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
   @keyframes curve { to { stroke-dashoffset: 0; } }
 
+
+  .more { margin-top: 2.5rem; padding: 1.6rem 1.75rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+  .more h3 { font-size: 1.05rem; margin-bottom: .4rem; }
+  .more ul { list-style: none; margin: 0; padding: 0; }
+  .more li { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+  .more li:first-child { border-top: 0; }
+  .more strong { display: block; font-weight: 600; }
+  .more span { display: block; color: var(--muted); font-size: .9375rem; margin-top: .2rem; max-width: 75ch; }
+  .more a { flex: none; font-weight: 600; font-size: .875rem; text-decoration: none; padding: .45rem .85rem; border-radius: 8px; border: 1px solid var(--line-2); color: var(--ink); }
+  .more a:hover { border-color: var(--teal); color: var(--teal); }
+  @media (max-width: 720px) { .more li { flex-direction: column; align-items: flex-start; gap: .6rem; } }
+
   /* Publications */
   .pubs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
   .pub { padding: 1.8rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--teal); display: flex; flex-direction: column; }
@@ -283,7 +295,7 @@
     <section id="projects" aria-labelledby="projects-title">
       <div class="sec-head reveal">
         <h2 id="projects-title">Selected projects</h2>
-        <p>Language models, explainable machine learning, and forecasting, each built end to end.</p>
+        <p>LLM systems, computer vision, explainable machine learning, and forecasting, each built end to end.</p>
       </div>
 
       <div class="projects">
@@ -355,6 +367,50 @@
           </div>
         </article>
 
+
+        <!-- ChefBot -->
+        <article class="card reveal">
+          <div class="visual" aria-hidden="true">
+            <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
+              <text class="v-faint" x="24" y="30">Requested ingredients</text>
+              <rect x="24" y="40" width="64" height="24" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/><text class="v-label" x="56" y="56" text-anchor="middle">tomato</text>
+              <rect x="94" y="40" width="58" height="24" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/><text class="v-label" x="123" y="56" text-anchor="middle">garlic</text>
+              <rect x="24" y="70" width="56" height="24" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/><text class="v-label" x="52" y="86" text-anchor="middle">basil</text>
+              <rect x="86" y="70" width="66" height="24" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/><text class="v-label" x="119" y="86" text-anchor="middle">chili</text>
+              <path d="M160 70 C 180 70, 182 92, 200 92" fill="none" stroke="rgba(23,25,28,.18)" stroke-width="1.5"/>
+              <g class="float">
+                <rect x="200" y="30" width="176" height="122" rx="12" fill="#FFFFFF" stroke="#D3D8D5"/>
+                <text class="v-label" x="214" y="52">Tomato Basil Pasta</text>
+                <rect x="214" y="62" width="120" height="5" rx="2.5" fill="#C6CCD1"/>
+                <rect x="214" y="74" width="140" height="5" rx="2.5" fill="#C6CCD1"/>
+                <rect x="214" y="86" width="104" height="5" rx="2.5" fill="#C6CCD1"/>
+                <rect x="214" y="98" width="128" height="5" rx="2.5" fill="#C6CCD1"/>
+                <rect x="214" y="110" width="92" height="5" rx="2.5" fill="#C6CCD1"/>
+                <text class="v-faint" x="214" y="140">TinyLlama 1.1B draft</text>
+              </g>
+              <text class="v-faint" x="24" y="128">Ingredient Guard</text>
+              <g>
+                <circle cx="34" cy="146" r="7" fill="#0E7C66"/><path d="M30.5 146 l2.5 2.5 l4.5 -5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/><text class="v-label" x="48" y="150">tomato</text>
+                <circle cx="34" cy="168" r="7" fill="#0E7C66"/><path d="M30.5 168 l2.5 2.5 l4.5 -5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/><text class="v-label" x="48" y="172">garlic</text>
+                <circle cx="114" cy="146" r="7" fill="#B7791F"/><rect x="110.5" y="145" width="7" height="2" rx="1" fill="#fff"/><text class="v-label" x="128" y="150">basil</text>
+                <circle cx="114" cy="168" r="7" fill="#B4413C"/><path d="M111 165 l6 6 M117 165 l-6 6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><text class="v-label" x="128" y="172">chili</text>
+              </g>
+              <rect x="200" y="164" width="176" height="28" rx="14" fill="rgba(183,121,31,.10)" stroke="rgba(183,121,31,.45)"/>
+              <text class="v-label" x="288" y="182" text-anchor="middle" style="fill:#8A5A0B">Missing chili, retrying</text>
+            </svg>
+          </div>
+          <div class="body">
+            <ul class="tags"><li class="tag">LLMs</li><li class="tag">Vector search</li><li class="tag">Self-checking</li></ul>
+            <h3>ChefBot: a recipe generator that checks its own work</h3>
+            <p>Turns a list of ingredients into a recipe with a small open-source LLM, then an Ingredient Guard verifies every requested ingredient made it into the recipe and retries with a stronger prompt when one is missing. Includes live decoding controls, four prompt styles, and semantic ingredient substitutes.</p>
+            <div class="metric"><b>24×</b><span>faster ingredient search with Annoy, matching exact search on every tested query</span></div>
+            <p class="stack">TinyLlama 1.1B, Hugging Face Transformers, PyTorch, spaCy, Annoy, Streamlit</p>
+            <div class="card-links">
+              <a href="https://github.com/sk28352/Chef-Bot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>View code</a>
+            </div>
+          </div>
+        </article>
+
         <!-- Mental health chatbot -->
         <article class="card reveal">
           <div class="visual" aria-hidden="true">
@@ -399,39 +455,45 @@
           </div>
         </article>
 
-        <!-- Wind -->
+
+
+        <!-- Real vs AI faces -->
         <article class="card reveal">
           <div class="visual" aria-hidden="true">
             <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
-              <defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#0E7C66"/><stop offset="1" stop-color="#5B8A80"/></linearGradient></defs>
-              <!-- turbine -->
-              <path d="M86 92 L82 206 L90 206 Z" fill="#9AA1A8"/>
-              <g class="spin" style="--cx:86px; --cy:90px">
-                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#0E7C66"/>
-                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#0E7C66" transform="rotate(120 86 90)"/>
-                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#8A5A0B" transform="rotate(240 86 90)"/>
+              <g class="float">
+                <rect x="24" y="28" width="70" height="84" rx="10" fill="#FFFFFF" stroke="#D3D8D5"/>
+                <circle cx="59" cy="62" r="16" fill="#CBD1D5"/><path d="M35 108 C 38 88, 80 88, 83 108" fill="#CBD1D5"/>
+                <rect x="104" y="28" width="70" height="84" rx="10" fill="#FFFFFF" stroke="#D3D8D5"/>
+                <circle cx="139" cy="62" r="16" fill="#CBD1D5"/><path d="M115 108 C 118 88, 160 88, 163 108" fill="#CBD1D5"/>
+                <g fill="#0E7C66" opacity=".55"><rect x="128" y="50" width="4" height="4"/><rect x="146" y="58" width="4" height="4"/><rect x="134" y="70" width="4" height="4"/><rect x="150" y="86" width="4" height="4"/><rect x="120" y="94" width="4" height="4"/></g>
               </g>
-              <circle cx="86" cy="90" r="6" fill="#17191C"/>
-              <!-- power curve -->
-              <line x1="170" y1="190" x2="380" y2="190" stroke="rgba(23,25,28,.18)"/>
-              <line x1="170" y1="190" x2="170" y2="40" stroke="rgba(23,25,28,.18)"/>
-              <text class="v-faint" x="275" y="210" text-anchor="middle">wind speed</text>
-              <text class="v-faint" x="160" y="118" text-anchor="middle" transform="rotate(-90 160 118)">power output</text>
-              <path class="draw-curve" d="M172 188 C 200 188, 212 186, 226 172 S 262 66, 292 56 L 376 54" fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round"/>
-              <g fill="#B7791F" opacity=".85">
-                <circle cx="190" cy="185" r="2.6"/><circle cx="214" cy="181" r="2.6"/><circle cx="232" cy="160" r="2.6"/><circle cx="246" cy="128" r="2.6"/>
-                <circle cx="258" cy="98" r="2.6"/><circle cx="272" cy="74" r="2.6"/><circle cx="296" cy="60" r="2.6"/><circle cx="330" cy="52" r="2.6"/><circle cx="360" cy="56" r="2.6"/>
-              </g>
+              <rect x="24" y="122" width="70" height="22" rx="11" fill="rgba(14,124,102,.08)" stroke="rgba(14,124,102,.45)"/><text class="v-label" x="59" y="137" text-anchor="middle" style="fill:#0A5F4E">Real</text>
+              <rect x="100" y="122" width="78" height="22" rx="11" fill="rgba(183,121,31,.10)" stroke="rgba(183,121,31,.45)"/><text class="v-label" x="139" y="137" text-anchor="middle" style="fill:#8A5A0B;font-size:10px">AI-generated</text>
+              <text class="v-faint" x="24" y="176">Gradio game: you vs. the model</text>
+              <text class="v-faint" x="214" y="40">Test accuracy</text>
+              <text class="v-label" x="214" y="66">CNN</text>
+              <rect x="276" y="57" width="100" height="11" rx="5.5" fill="rgba(23,25,28,.07)"/>
+              <rect class="bar-grow" x="276" y="57" width="63" height="11" rx="5.5" fill="#9AA1A8"/>
+              <text class="v-label" x="214" y="92">Frozen</text>
+              <rect x="276" y="83" width="100" height="11" rx="5.5" fill="rgba(23,25,28,.07)"/>
+              <rect class="bar-grow" x="276" y="83" width="71" height="11" rx="5.5" fill="#5B8A80" style="animation-delay:.12s"/>
+              <text class="v-label" x="214" y="118">Fine-tuned</text>
+              <rect x="276" y="109" width="100" height="11" rx="5.5" fill="rgba(23,25,28,.07)"/>
+              <rect class="bar-grow" x="276" y="109" width="76" height="11" rx="5.5" fill="#0E7C66" style="animation-delay:.24s"/>
+              <text class="v-faint" x="214" y="156">BatchNorm ablation</text>
+              <text class="v-label" x="214" y="180">trainable 66.7%</text>
+              <text class="v-label" x="214" y="200" style="fill:#0A5F4E">frozen 78.9%</text>
             </svg>
           </div>
           <div class="body">
-            <ul class="tags"><li class="tag">Forecasting</li><li class="tag">Time series</li></ul>
-            <h3>Wind turbine power forecasting</h3>
-            <p>Forecasting pipelines on meteorological and turbine data to predict power generation, comparing ARIMA and SARIMA against Prophet, LSTM, and a tuned gradient boosting model, then testing six regressors on turbine output.</p>
-            <div class="metric"><b>R² 0.99</b><span>with an MLP regressor, at an RMSE of 1.58 kW</span></div>
-            <p class="stack">ARIMA, SARIMA, Prophet, LSTM, scikit-learn</p>
+            <ul class="tags"><li class="tag">Computer vision</li><li class="tag">Transfer learning</li></ul>
+            <h3>Real vs. AI-generated face detection</h3>
+            <p>Five approaches compared on a small dataset, from an MLP to a fine-tuned MobileNetV3, with a 12-run fine-tuning study and a BatchNorm ablation. Also uncovered that checkpointing on validation loss had selected a model that was only guessing. Comes with a “human vs. model” Gradio game.</p>
+            <div class="metric"><b>76.0%</b><span>test accuracy with fine-tuned MobileNetV3, up from 63% for a CNN from scratch</span></div>
+            <p class="stack">TensorFlow, Keras, MobileNetV3Small, scikit-learn, Gradio</p>
             <div class="card-links">
-              <a href="https://github.com/sk28352/Wind-Energy-and-Turbine-Power-Analysis" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>View code</a>
+              <a href="https://github.com/sk28352/Real-vs-ai-face-detection" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>View code</a>
             </div>
           </div>
         </article>
@@ -466,6 +528,43 @@
             <p class="stack">scikit-learn, Random Forest, AdaBoost, SHAP, ELI5</p>
             <div class="card-links">
               <a href="https://github.com/sk28352/Heart-Disease-Prediction" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>View code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Wind -->
+        <article class="card reveal">
+          <div class="visual" aria-hidden="true">
+            <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
+              <defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#0E7C66"/><stop offset="1" stop-color="#5B8A80"/></linearGradient></defs>
+              <!-- turbine -->
+              <path d="M86 92 L82 206 L90 206 Z" fill="#9AA1A8"/>
+              <g class="spin" style="--cx:86px; --cy:90px">
+                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#0E7C66"/>
+                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#0E7C66" transform="rotate(120 86 90)"/>
+                <path d="M86 90 L80 32 Q86 26 92 32 Z" fill="#8A5A0B" transform="rotate(240 86 90)"/>
+              </g>
+              <circle cx="86" cy="90" r="6" fill="#17191C"/>
+              <!-- power curve -->
+              <line x1="170" y1="190" x2="380" y2="190" stroke="rgba(23,25,28,.18)"/>
+              <line x1="170" y1="190" x2="170" y2="40" stroke="rgba(23,25,28,.18)"/>
+              <text class="v-faint" x="275" y="210" text-anchor="middle">wind speed</text>
+              <text class="v-faint" x="160" y="118" text-anchor="middle" transform="rotate(-90 160 118)">power output</text>
+              <path class="draw-curve" d="M172 188 C 200 188, 212 186, 226 172 S 262 66, 292 56 L 376 54" fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round"/>
+              <g fill="#B7791F" opacity=".85">
+                <circle cx="190" cy="185" r="2.6"/><circle cx="214" cy="181" r="2.6"/><circle cx="232" cy="160" r="2.6"/><circle cx="246" cy="128" r="2.6"/>
+                <circle cx="258" cy="98" r="2.6"/><circle cx="272" cy="74" r="2.6"/><circle cx="296" cy="60" r="2.6"/><circle cx="330" cy="52" r="2.6"/><circle cx="360" cy="56" r="2.6"/>
+              </g>
+            </svg>
+          </div>
+          <div class="body">
+            <ul class="tags"><li class="tag">Forecasting</li><li class="tag">Time series</li></ul>
+            <h3>Wind turbine power forecasting</h3>
+            <p>Forecasting pipelines on meteorological and turbine data to predict power generation, comparing ARIMA and SARIMA against Prophet, LSTM, and a tuned gradient boosting model, then testing six regressors on turbine output.</p>
+            <div class="metric"><b>R² 0.99</b><span>with an MLP regressor, at an RMSE of 1.58 kW</span></div>
+            <p class="stack">ARIMA, SARIMA, Prophet, LSTM, scikit-learn</p>
+            <div class="card-links">
+              <a href="https://github.com/sk28352/Wind-Energy-and-Turbine-Power-Analysis" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>View code</a>
             </div>
           </div>
         </article>
@@ -505,6 +604,20 @@
           </div>
         </article>
 
+      </div>
+    
+      <div class="more reveal">
+        <h3>More projects</h3>
+        <ul>
+          <li>
+            <div><strong>Tweet sentiment analysis</strong><span>Bag-of-Words, TF-IDF, and sentiment-frequency features compared with logistic regression, then traced the ~99% scores to shortcut learning: the dataset’s labels came from emoticons.</span></div>
+            <a href="https://github.com/sk28352/Tweet-Sentiment-Analysis" target="_blank" rel="noopener">View code</a>
+          </li>
+          <li>
+            <div><strong>LSTM book title generator</strong><span>Found a data bug that duplicated most training sequences, cutting perplexity about 7× once fixed, then added end-of-title tokens and top-k and nucleus sampling so titles finish naturally.</span></div>
+            <a href="https://github.com/sk28352/Book-Title-Generator-LSTM" target="_blank" rel="noopener">View code</a>
+          </li>
+        </ul>
       </div>
     </section>
 
